@@ -44,9 +44,9 @@ const componetUI =
 const post =
 {
 	id:Math.floor(Math.random() * +Date.now()),
-	title:ref(`Заголовок ${props.count + 1}`),
+	title:ref(null),
 	change: ref(true),
-	body: ref('12412421'),
+	body: ref(null),
 }
 
 function addItem(elem)

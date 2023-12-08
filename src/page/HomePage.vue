@@ -61,6 +61,7 @@ function updeteItem( elem, action )
 	{
 		const findIdx = items.findIndex(el => el.id === elem);
 		items[findIdx].change = !items[findIdx].change
+		console.log(12)
 	}
 	if(action === 'Удалить')
 	{
