@@ -1,6 +1,6 @@
 <template>
 	<div class="input-box">
-		<input  :type="text" name="#" :placeholder="placeholder">
+		<input :type="type" :placeholder="placeholder">
 		<p>{{placeholder}}</p>
 	</div>
 </template>
@@ -9,17 +9,20 @@
 import {defineProps, defineEmits} from 'vue';
 const props = defineProps
 ({
-		type:
+	type:
+	{
+		type: [String, Number],
+		default: '',
+	},
+	placeholder:
 	{
 		type: String,
 		default: '',
 	},
-		placeholder:
-	{
-		type: String,
-		default: '',
-	},
+
 })
+
+
 </script>
 
 <style lang="scss">
@@ -40,11 +43,11 @@ const props = defineProps
 			background-color: #fff;
 			opacity: 1;
 		}
-
 	}
 	.input-box
 	{
 		position: relative;
+		margin-bottom: 10px;
 	}
 	.input-box > p
 	{
