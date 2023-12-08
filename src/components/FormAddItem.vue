@@ -3,11 +3,12 @@
 		<MyInput
 			:type = "componetUI.text"
 			:placeholder = "componetUI.firstPlaceholder"
+			v-model = "post.title"
 		/>
 		<MyInput
 			:type = "componetUI.text"
 			:placeholder = "componetUI.secPlaceholder"
-			v-model = "post.name"
+			v-model = "post.body"
 		/>
 		<MyButton
 			:contetn = "componetUI.add"
@@ -23,6 +24,15 @@ import MyInput from '@/UI/MyInput.vue';
 
 import {defineProps, defineEmits} from 'vue';
 
+const props = defineProps
+({
+	count:
+	{
+		type: Number,
+		default: '',
+	},
+
+})
 const emits = defineEmits(['elemUpdate']);
 const componetUI =
 {
@@ -34,7 +44,7 @@ const componetUI =
 const post =
 {
 	id:Math.floor(Math.random() * +Date.now()),
-	title:'Заголовок 2',
+	title:ref(`Заголовок ${props.count + 1}`),
 	change: ref(true),
 	body: ref('12412421'),
 }

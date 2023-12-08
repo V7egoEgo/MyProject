@@ -1,12 +1,21 @@
 <template>
 	<div class="input-box">
-		<input :type="type" :placeholder="placeholder">
-		<p>{{placeholder}}</p>
+		<input
+			@blur="focusOut"
+			@focus="focusOn"
+			:value="modelValue"
+			@input="$emit('update:modelValue', $event.target.value)"
+			:type="type"
+			:placeholder="placeholder">
+		<span>
+			{{placeholder}}
+		</span>
 	</div>
 </template>
 
 <script setup>
-import {defineProps, defineEmits} from 'vue';
+import {defineProps, defineEmits, ref} from 'vue';
+
 const props = defineProps
 ({
 	type:
@@ -21,7 +30,17 @@ const props = defineProps
 	},
 
 })
+const emit = defineEmits(['update:modelValue'])
+	const inputRef = ref();
 
+
+
+
+function updateValue()
+{
+	emit('update:modelValue', null);
+	nextTick(() => focusOut())
+}
 
 </script>
 
@@ -35,9 +54,9 @@ const props = defineProps
 		border:1px solid #125925;
 		outline : none;
 
-		&:hover + p
+		&:hover + span
 		{
-			top: -25px;
+			top: -10px;
 			left: 10px;
 			z-index: 1;
 			background-color: #fff;
@@ -49,7 +68,7 @@ const props = defineProps
 		position: relative;
 		margin-bottom: 10px;
 	}
-	.input-box > p
+	.input-box > span
 	{
 		opacity: 0;
 		transition: all  .5s;

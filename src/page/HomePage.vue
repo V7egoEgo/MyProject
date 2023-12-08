@@ -1,6 +1,7 @@
 <template>
   <div class="conteiner">
     <FormAddItem
+    	:count = "items.length"
     	@addItem ="addItem"
     />
     <BoxItems
