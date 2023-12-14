@@ -1,12 +1,12 @@
 <template>
   <div class="conteiner">
     <FormAddItem
-    	:count = "items.length"
     	@addItem ="addItem"
     />
     <BoxItems
-    	@elemUpdate ="updeteItem"
-    	:items = "items"/>
+				@elemUpdate ="updeteItem"
+				:items = "items"
+    	/>
   </div>
 </template>
 
@@ -56,12 +56,10 @@ const items = reactive([
 
 function updeteItem( elem, action )
 {
-	console.log(action ,"активность",elem , )
 	if (action === 'Изменить')
 	{
 		const findIdx = items.findIndex(el => el.id === elem);
 		items[findIdx].change = !items[findIdx].change
-		console.log(12)
 	}
 	if(action === 'Удалить')
 	{
@@ -69,9 +67,9 @@ function updeteItem( elem, action )
 		items.splice(findIdx , 1)
 	}
 }
+
 function addItem( elem)
 {
-	console.log(elem)
 	items.push( elem )
 }
 

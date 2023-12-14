@@ -4,13 +4,16 @@
 			<div>
 				<h2>{{item.title}}</h2>
 				<p v-if = "item.change">{{item.body}}</p>
-						<MyInput
-						v-else
-						:type = "componetUI.text"
-						:placeholder = "componetUI.placeholder"
+				<div v-else class="input-box">
+					<input
+						type="text"
+						placeholder="изменение текста"
 						v-model = "item.body"
-				/>
-
+						>
+					<span>
+						изменение текста
+					</span>
+				</div>
 			</div>
 			<div class="Item-btn">
 				<MyButton
@@ -49,6 +52,7 @@ const props = defineProps
 		default: null,
 	},
 })
+
 function myMethod(action , elem)
 {
 	emits('elemUpdate', elem , action)

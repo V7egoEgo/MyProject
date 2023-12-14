@@ -1,15 +1,14 @@
 <template>
 	<div class="input-box">
 		<input
-			@blur="focusOut"
-			@focus="focusOn"
-			:value="modelValue"
+			:modelValue="modelValue"
 			@input="$emit('update:modelValue', $event.target.value)"
 			:type="type"
 			:placeholder="placeholder">
 		<span>
 			{{placeholder}}
 		</span>
+		{{modelValue}}
 	</div>
 </template>
 
@@ -28,6 +27,11 @@ const props = defineProps
 		type: String,
 		default: '',
 	},
+	modelValue:
+	{
+		type: String,
+		default: '',
+	}
 
 })
 const emit = defineEmits(['update:modelValue'])

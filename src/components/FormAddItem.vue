@@ -1,18 +1,27 @@
 <template>
 	<form class="home-page__form" @submit.prevent>
-		<MyInput
-			:type = "componetUI.text"
-			:placeholder = "componetUI.firstPlaceholder"
-			v-model = "post.title"
-		/>
-		<MyInput
-			:type = "componetUI.text"
-			:placeholder = "componetUI.secPlaceholder"
-			v-model = "post.body"
-		/>
+	<div class="input-box">
+		<input
+			v-model="title"
+			placeholder="Название">
+		<span>
+			{{componetUI.firstPlaceholder}}
+		</span>
+
+	</div>
+	<div class="input-box">
+		<input
+			v-model="body"
+			placeholder="Описание">
+		<span>
+			{{componetUI.secPlaceholder}}
+		</span>
+		{{title}}
+		 {{body}}
+	</div>
 		<MyButton
 			:contetn = "componetUI.add"
-			@click = "addItem(post)"
+			@click = "addItem(title , body)"
 		/>
 	</form>
 </template>
@@ -22,17 +31,8 @@ import { ref } from 'vue';
 import MyButton from '@/UI/MyButton.vue';
 import MyInput from '@/UI/MyInput.vue';
 
-import {defineProps, defineEmits} from 'vue';
+import {defineProps, defineEmits , reactive} from 'vue';
 
-const props = defineProps
-({
-	count:
-	{
-		type: Number,
-		default: '',
-	},
-
-})
 const emits = defineEmits(['elemUpdate']);
 const componetUI =
 {
@@ -41,17 +41,21 @@ const componetUI =
 	secPlaceholder:'Описание',
 	text:'text',
 }
-const post =
-{
-	id:Math.floor(Math.random() * +Date.now()),
-	title:ref(null),
-	change: ref(true),
-	body: ref(null),
-}
+let title =ref(null)
+let body = ref(null)
 
-function addItem(elem)
+function addItem(titleForm , bodyForm)
 {
-	emits('addItem', elem )
+	const post = reactive(
+		{
+			id:Math.floor(Math.random() * +Date.now()),
+			title: titleForm,
+			change: ref(true),
+			body: bodyForm,
+		})
+	emits('addItem', post);
+	this.title ='';
+	this.body ='';
 }
 </script>
 
