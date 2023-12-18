@@ -14,31 +14,3 @@
 		</div>
 	</header>
 </template>
-
-<script setup>
-
-</script>
-
-<style lang="scss">
-	.conteiner
-	{
-		margin: 0 auto;
-		width: 1300px;
-	}
-	nav
-	{
-		height: 45px;
-		width: 100%;
-		display: flex;
-		justify-content:space-around;
-		a
-		{
-			text-decoration: none;
-			color: black;
-		}
-		a:hover
-		{
-			color: blue;
-		}
-	}
-</style>

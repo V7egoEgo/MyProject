@@ -16,8 +16,6 @@
 		<span>
 			{{componetUI.secPlaceholder}}
 		</span>
-		{{title}}
-		 {{body}}
 	</div>
 		<MyButton
 			:contetn = "componetUI.add"

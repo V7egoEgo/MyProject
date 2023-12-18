@@ -70,7 +70,7 @@ function updeteItem( elem, action )
 
 function addItem( elem)
 {
-	items.push( elem )
+	items.unshift( elem )
 }
 
 </script>
